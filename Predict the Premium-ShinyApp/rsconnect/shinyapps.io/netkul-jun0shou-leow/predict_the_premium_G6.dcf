@@ -1,0 +1,13 @@
+name: predict_the_premium_G6
+title: predict_the_premium_G6
+username:
+account: netkul-jun0shou-leow
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 6518518
+bundleId: 6024190
+url: https://netkul-jun0shou-leow.shinyapps.io/predict_the_premium_G6/
+when: 1655732348.32428
+lastSyncTime: 1655732348.32429
+asMultiple: FALSE
+asStatic: FALSE
