@@ -14,7 +14,8 @@ data <- data %>%
     
     bmi>30 ~ "obesity"
   )) 
-![image](https://user-images.githubusercontent.com/102680739/174866008-8483b875-3b50-41a5-beaf-302795fcc959.png)
+
+![image](https://user-images.githubusercontent.com/102680739/174873126-89390300-054e-4c27-b25c-ae3b7c03ef8d.png)
 
 Applying factors to different colums
 
