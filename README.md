@@ -49,7 +49,7 @@ str(data)
  
  964  11
  Correlation Matrix
- 
+ ```
 ggcorr(data, label = T, color = "black", size = 5)+
 
   labs(title = "Correlation Matrix")+
@@ -57,7 +57,7 @@ ggcorr(data, label = T, color = "black", size = 5)+
   theme(plot.title = element_text(family = "Roboto Condensed", size = 19, face = "bold",vjust = 1),
   
         plot.subtitle = element_text(family = "Roboto Condensed", size = 16,vjust = 0))
-        
+```        
   ![Correlation Matrix](https://user-images.githubusercontent.com/102680739/174867423-bf45fcf2-af1d-42bd-a5e7-543c3dc9bd6a.png)
 
 Diabetics People Premium Analysis
