@@ -294,11 +294,9 @@ ggplot(data %>%
 scale_fill_manual(values = cols)
 ```
 ![number](https://user-images.githubusercontent.com/102680739/174872085-a1484ebe-f114-4c1b-8b4b-c859ad06a133.png)
-```
-library(ggrepel)
 
 #Box and Whisker Plot for Different BMI category
-
+```
 library(ggrepel)
 
 data %>% 
