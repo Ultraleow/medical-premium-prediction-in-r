@@ -1,0 +1,156 @@
+---
+title: "R Notebook"
+output:
+  html_document:
+    df_print: paged
+---
+
+Install required package for machine learning model library 
+```{r}
+#install.packages("openxlsx")
+#install.packages("caret")
+#install.packages("MLeval")
+#install.packages("Metrics")
+```
+
+```{r}
+library(openxlsx)
+library(caret)
+library(MLeval)
+library(Metrics)
+```
+
+#read cleaned data and split it into 80/20, 
+```{r}
+regre <- read.xlsx("new.xlsx",1)
+regre
+
+split=0.80  # define an 80%/20% train/test split of the dataset
+trainIndex<-createDataPartition(regre$PremiumPrice, p=split, list=FALSE)
+data_train<-regre[ trainIndex,]
+test_set<-regre[-trainIndex,]
+train_control <- trainControl(method="repeatedcv", number=10, repeats=5)
+```
+K-nearest neighbors algorithm
+```{r}
+#knn <- train(PremiumPrice ~., data=data_train, trControl=train_control, method="knn")
+#saveRDS(knn, "knn.rds")
+knn<- readRDS("knn.rds")
+pred_knn <- round(predict(knn, newdata=test_set),1)
+```
+
+Bayesian Ridge Regression
+```{r}
+#bridge <- train(PremiumPrice ~., data=data_train, trControl=train_control, method="bridge")
+#saveRDS(bridge, "bridge.rds")
+bridge<- readRDS("bridge.rds")
+pred_bridge <- round(predict(bridge, newdata=test_set),1)
+```
+
+Random Forest
+```{r}
+#rf <- train(PremiumPrice ~., data=data_train, trControl=train_control, method="rf")
+#saveRDS(rf, "rf.rds")
+rf<- readRDS("rf.rds")
+pred_rf <- round(predict(rf, newdata=test_set),1)
+```
+
+Support Vector Machine
+```{r}
+#svm <- train(PremiumPrice ~., data=data_train, trControl=train_control, method="svmLinear")
+#saveRDS(svm, "svm.rds")
+svm<- readRDS("svm.rds")
+pred_svm <- round(predict(svm, newdata=test_set),1)
+```
+
+Glmnet is a package that fits generalized linear and similar models via penalized maximum likelihood.
+```{r}
+#glmnet <- train(PremiumPrice~., data=data_train, trControl=train_control, method="glmnet")
+#saveRDS(glmnet, "glmnet.rds")
+glmnet<- readRDS("glmnet.rds")
+pred_glmnet <- round(predict(glmnet, newdata=test_set),1)
+```
+
+
+summary regression metrics for each model train set
+```{r}
+resamps <- resamples(list(knn = knn,
+                          bridge = bridge,
+                          rf = rf,
+                          SVM = svm,
+                          glmnet = glmnet))
+summary(resamps)
+```
+summary regression metrics for each model test set
+```{r}
+df_me <- data.frame (Method  = c(0),
+                  RSMERsquared = c(0),
+                  Rsquared = c(0),
+                  MAE = c(0))
+df_me
+
+test_pred <- predict(rf, newdata = test_set)
+result <-postResample(test_pred, test_set$PremiumPrice)
+df_me<-rbind(df_me,c("rf",result["RMSE"],result["Rsquared"],result["MAE"]))
+
+test_pred <- predict(glmnet, newdata = test_set)
+result <-postResample(test_pred, test_set$PremiumPrice)
+df_me<-rbind(df_me,c("glmnet",result["RMSE"],result["Rsquared"],result["MAE"]))
+
+test_pred <- predict(svm, newdata = test_set)
+result <-postResample(test_pred, test_set$PremiumPrice)
+df_me<-rbind(df_me,c("svm",result["RMSE"],result["Rsquared"],result["MAE"]))
+
+test_pred <- predict(bridge, newdata = test_set)
+result <-postResample(test_pred, test_set$PremiumPrice)
+df_me<-rbind(df_me,c("bridge",result["RMSE"],result["Rsquared"],result["MAE"]))
+
+test_pred <- predict(knn, newdata = test_set)
+result <-postResample(test_pred, test_set$PremiumPrice)
+df_me<-rbind(df_me,c("knn",result["RMSE"],result["Rsquared"],result["MAE"]))
+df_me
+```
+plot each variable importance
+```{r}
+x<-varImp(rf)
+```
+
+```{r}
+plot(x)
+```
+
+code inference 
+```{r}
+Age <- 40
+Weight <- 60
+AnyTransplants <- 0
+NumberOfMajorSurgeries <-0
+AnyChronicDiseases <-0
+Height <-0
+HistoryOfCancerInFamily<-0
+BloodPressureProblems<-0
+Diabetes<-0
+KnownAllergies<-0
+infe_df <- data.frame(
+  Age,
+  Weight,
+  AnyTransplants,
+  NumberOfMajorSurgeries,
+  AnyChronicDiseases,
+  Height,
+  HistoryOfCancerInFamily,
+  BloodPressureProblems,
+  Diabetes,
+  KnownAllergies
+)
+infe_df
+prediction <- predict(rf, newdata = infe_df)
+```
+
+```{r}
+rf<- readRDS("rf.rds")
+pred_rf <- round(predict(rf, newdata=test_set),1)
+prediction
+```
+
+
