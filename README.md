@@ -1,3 +1,5 @@
+###Medical Insurance Premium Prediction for Consumer
+
 Exploratory Data Analysis
 ```
 data$bmi <- 10000*(data$Weight/(data$Height)^2)
