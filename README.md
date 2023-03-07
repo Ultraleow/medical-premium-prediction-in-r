@@ -1,3 +1,102 @@
+# Link for slide
+https://rpubs.com/ultraleow/predict-the-premium-G6
+
+# Link for data product (include insurance predictor)
+https://netkul-jun0shou-leow.shinyapps.io/predict-the-premiumv2/
+
+1.	What is the domain of interest you are working on?
+
+Insurance Industry
+
+2.	Why are you personally interested to work in this domain?
+
+People are always confused about their medical insurance and don't know the insurance cost at different ages and conditions. This situation is an obstacle for them when they are considering an insurance package, and they are unsure whether they are overcommitted or not. With enough quality data, we can innovate a useful data-driven product that can make predictions of the insurance premium.
+
+3.	For whom are you answering the question being asked? Name the beneficiary of the product.
+
+1.Medical insurance buyers
+When customers are unsure how much they need to pay for their health insurance, they can use this data product and check it up anytime and anywhere. Customers can just key in their current medical condition and body information to estimate the amount of insurance premium they have to pay before making any decision. This would help them to save time and money and improve their budget planning
+2.Insurance Company/Agent
+It can be more convenient and accurate to predict the insurance cost you need to offer to your customer in a second. Insurance agents can provide customers with efficient and convenient services by shortening the calculation process for the premium that customers need to pay quickly. With this data product, they can bring the balance between the lowest offer that can attract our customers and maximise the profit brought to the company. We might save the labour cost and reduces the error rate during the process.
+
+4.	What data are you using? State the source.
+
+Medical Insurance Premium Prediction from Kaggle
+This dataset is released by a medical insurance company for almost 1000 customers. This dataset is voluntarily given by customers.
+https://www.kaggle.com/datasets/tejashvi14/medical-insurance-premium-prediction
+Relevant attributes include
+Age	Diabetes
+	Blood PressureProblems
+	Any
+Transplants
+	Any
+Chronic
+Diseases
+	Height
+	Weight
+	Known
+Allergies
+	HistoryOf
+CancerIn
+Family
+	Number
+Of
+Major
+Surgeries
+	PremiumPrice
+
+
+5.	What kind of analysis are you doing?
+Descriptive Analysis
+A descriptive data analysis seeks to summarise the measurements in a single number without interpretation.
+Exploratory Analysis
+Exploratory data analysis (EDA) builds on a descriptive analysis by searching for discoveries, trends, correlations, or relationships between the measurements of multiple variables to generate ideas or hypotheses or discover new insights.
+Method: 
+Summary Statistics, Examples of summary statistics for a single numerical variable is the mean, median, mode, max, min, range, quartiles/percentiles, variance, standard deviation, coefficient of determination, skewness, and kurtosis. 
+For bivariate data, the summary statistics is the linear correlation, chi squared, or the p value-based z-test, t-test or analysis of variance
+Predictive Analysis
+Predictive data analysis uses a subset of measurements (the features) to predict another measurement (the outcome) on a single person or unit. We are going to use machine learning to solve this regression problem. We will try at least five algorithms and compare the accuracy among them.
+Regression methods
+Multiple Linear Regression, Polynomial Regression, Decision Tree, Random Forest, Gaussian process regression, Support Vector Regression, Neural network
+Reference: 
+https://towardsdatascience.com/7-of-the-most-commonly-used-regression-algorithms-and-how-to-choose-the-right-one-fc3c8890f9e3
+6.	Do you consider your results significant? Briefly explain.
+Yes, we are committed to studying causality and variable correlation to build the best health insurance plan for potential buyers and help people make better financial decisions. Leverage health insurance plans to ease their burden and play a key role when illness strikes.
+Our results are also maximising stakeholder benefits and helping them make better decisions. Overall, we could balance medicare buyers who can get coverage at the lowest cost and insurance agents who get more benefits. We seek balance.
+7.	What is your data product? Give a brief description.
+
+ShinyApp: Medical Insurance Premium Estimation
+People who wish to purchase a medical insurance package can utilise it at any time and choose the corresponding option according to whether they have certain diseases to figure out the cost of medical insurance they need to pay. We utilise the medical conditions to estimate the medical premium using machine learning. With this, potential buyers can check the medical insurance premium they need to play anytime and anywhere without the phenomenon of staggering fees.
+
+8.	Did you consider “reproducibility” in your work? If yes, show evidence.
+
+Yes. We have published R code with the original Kaggle dataset, methodology used and activities conducted on GitHub.
+
+Link to GitHub: https://github.com/Ultraleow/PODS_G6_medical-premium-prediction-in-r
+
+9.	Discuss the current issues and challenges facing Data Science today.
+1.Data Security
+a. Data security includes all security measures and tools applied to analytics and data processes
+b. Information theft is the most common data security concern, especially for organizations that have access to sensitive data like financial information or customers’ personal information need to follow the three fundamentals of data security: Confidentiality; Integrity; Accessibility.
+C. Python dominates among data science, we’d better take a proactive approach to integrating open-source solutions, to keep security. Ensuring that data scientists do not have to use their preferred tools outside of the policy boundary.
+2. Deficiency of Skilled Talent
+a. Data scientist have to with in-depth knowledge and domain expertise.
+b. Along with a deep understanding of ML and AI algorithms,  Data scientist are required to also know about the business perspective of data science. And able to tell their business story through their data
+3. Lack of clarity on business platform
+a. One needs to investigate and understand the issue properly
+b. Provide Clear goal and actionable insights
+4.Data Integration
+a. Many companies face hurdles getting information in a large number of data's centralized system for reference and decision-making.  
+b. We need to obtain data that can actually answer the problems.
+5. Automation of Data Cleaning
+a.Data cleaning refers to clean incorrect data, data redundancy, and duplicate data with no structure or format.
+b. We need looking for use artificial intelligence and machine learning to automate scrubbing data  to speed up data analytics and gain accurate insights from big data.
+6. Cloud Computing
+a. Many Big Data analytic tools are hosted in the cloud. But Cloud computing wasn’t designed for real-time data processing and data streaming. That strain on the system can result in slow processing speeds, bottlenecks, and down-time—which not only prevents organizations from realizing the full potential of Big Data, but also puts their business and consumers at risk.
+b. Need to find a way to automate real-time processing of large amounts of data to manage the heavy load and avoid some of the biggest data analytic risks.
+
+
+
 ###Medical Insurance Premium Prediction for Consumer
 
 Exploratory Data Analysis
